@@ -2,7 +2,9 @@
 
 The scripts listed in this repository is referred by this medium article. Below is the Google Bard generated explanation of each of the scripts:  
 
-## Create Virtual Machine - create_vm_with_docker.sh
+## Create Virtual Machine
+**Script name:** [create_vm_with_docker.sh](https://github.com/google-cloud-abap/community/blob/main/blogs/abap-trial-docker-1909/create_vm_with_docker.sh)
+
 The script creates a Google Cloud Platform (GCP) virtual machine (VM) for installing Docker. The script first gets the project number and zone from the GCP configuration. It then creates a firewall rule to allow traffic on ports 3200, 3300, 8443, 30213, 50000, and 50001 to the VM. It then enables the Google Cloud IAM credentials and address validation services, which are required for ABAP SDK sample code. Next, it creates a service account that will be used by the ABAP SDK. Finally, it creates the VM with the specified configuration.
 
 Here is a more detailed explanation of each step:
@@ -54,7 +56,8 @@ gcloud compute instances create abap-trial-docker \
   --metadata=startup-script=curl\ \ https://raw.githubusercontent.com/google-cloud-abap/community/main/blogs/abap-trial-docker-1909/vm_startup_script.sh\ -o\ /tmp/vm_startup_script.sh'\n'chmod\ 755
 ```
 
-## Virtual Machine Startup Script - vm_startup_script.sh
+## Virtual Machine Startup Script
+**Script Name:** [vm_startup_script.sh](https://github.com/google-cloud-abap/community/blob/main/blogs/abap-trial-docker-1909/vm_startup_script.sh)
 
 The script is divided into two parts:
 
@@ -81,6 +84,8 @@ The following are the specific steps that are performed in the script:
 -   The `sudo docker run` command starts the Docker container and maps the container's ports to the host's ports.
 
 ## Import transport for ABAP SDK for Google Cloud
+**Script Name:**  [import_abap_sdk.sh](https://github.com/google-cloud-abap/community/blob/main/blogs/abap-trial-docker-1909/import_abap_sdk.sh)
+
 The code first creates a directory called `abap_sdk_transport` and changes to that directory. Then, it downloads the transport files from the Google Cloud Storage bucket.
 
 ```bash

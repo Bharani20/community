@@ -45,7 +45,3 @@ sudo docker run \
   sapse/abap-platform-trial:1909 \
   -skip-limits-check \
   --agree-to-sap-license
-
-#curl https://raw.githubusercontent.com/google-cloud-abap/community/main/blogs/abap-trial-docker-1909/install_sap_1909.sh -o /tmp/install_sap_1909.sh
-#chmod 755 /tmp/install_sap_1909.sh
-#nohup /tmp/install_sap_1909.sh > /tmp/output.txt &
