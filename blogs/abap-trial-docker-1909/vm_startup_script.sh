@@ -1,4 +1,6 @@
-# Create a machine with the below config and include the below VM startup script
+#!/bin/bash
+
+# Creates a machine with the below config and include the below VM startup script
 # -Machine Type: e2-highmem-2
 # -Boot OS: debian-12-bookworm-x86/64
 # -Size(GB): 200
@@ -8,8 +10,6 @@
 # curl https://raw.githubusercontent.com/google-cloud-abap/community/main/blogs/abap-trial-docker-1909/vm_startup_script.sh -o /tmp/vm_startup_script.sh
 # chmod 755 /tmp/vm_startup_script.sh
 # nohup /tmp/vm_startup_script.sh > /tmp/output.txt &
-
-#!/bin/bash
 
 #Install Docker Engine
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done

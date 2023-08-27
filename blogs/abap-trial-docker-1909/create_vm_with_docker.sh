@@ -37,8 +37,8 @@ gcloud iam service-accounts create abap-sdk-dev \
 
 #Create the VM for docker installation
 gcloud compute instances create abap-trial-docker \
-    --project=abap-sdk-poc \
-    --zone=us-west4-b \
+    --project=$PROJECT_NAME \
+    --zone=$ZONE \
     --machine-type=e2-highmem-2 \
     --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default \
     --metadata=startup-script=curl\ \
