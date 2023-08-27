@@ -1,8 +1,58 @@
-# Install ABAP Trail 1909 docker on Google Cloud Platform
+# Install ABAP Platform Trail 1909 docker on Google Cloud Platform
 
 The scripts listed in this repository is referred by this medium article. Below is the Google Bard generated explanation of each of the scripts:  
 
 ## Create Virtual Machine - create_vm_with_docker.sh
+The script creates a Google Cloud Platform (GCP) virtual machine (VM) for installing Docker. The script first gets the project number and zone from the GCP configuration. It then creates a firewall rule to allow traffic on ports 3200, 3300, 8443, 30213, 50000, and 50001 to the VM. It then enables the Google Cloud IAM credentials and address validation services, which are required for ABAP SDK sample code. Next, it creates a service account that will be used by the ABAP SDK. Finally, it creates the VM with the specified configuration.
+
+Here is a more detailed explanation of each step:
+
+-  The script validates if project name a and default compute/zone has been set.
+```bash
+#Get the project number
+PROJECT_NAME=$(gcloud config get project)
+#Check if project is set
+if [[ -z "$PROJECT_NAME" ]]; then
+    echo "Project Name is not set. Use gcloud config set project"
+    exit 1
+fi
+
+PROJECT_NUMBER=$(gcloud projects describe $PROJECT_NAME \
+--format="value(projectNumber)")
+
+#Get the compute/zone
+ZONE=$(gcloud config get compute/zone)
+
+#Check if zone is set
+if [[ -z "$ZONE" ]]; then
+    echo "Compute zone is not set. Use gcloud config set compute/zone"
+    exit 1.
+fi
+```
+-  The script then create a firewall. This line creates a firewall rule to allow traffic on ports 3200, 3300, 8443, 30213, 50000, and 50001 to the VM. The `-e direction=INGRESS` flag specifies that the traffic is coming into the VM. The `-e priority=1000` flag specifies that this rule has a priority of 1000, which means it will be applied before any other firewall rules. The `-e network=default` flag specifies that the rule applies to the default network. The `-e action=ALLOW` flag specifies that the traffic is allowed. The `-e rules=tcp:3200,tcp:3300,tcp:8443,tcp:30213,tcp:50000,tcp:50001` flag specifies the ports that are allowed. The `-e source-ranges=0.0.0.0/0` flag specifies that the traffic can come from any source IP address. The `-e target-tags=sapmachine` flag specifies that the rule applies to the VM with the tag `sapmachine`.
+```bash
+gcloud compute firewall-rules create sapmachine \ --direction=INGRESS --priority=1000 --network=default --action=ALLOW \ --rules=tcp:3200,tcp:3300,tcp:8443,tcp:30213,tcp:50000,tcp:50001 \ --source-ranges=0.0.0.0/0 --target-tags=sapmachine
+```
+-  This belo lines enables the Google Cloud IAM credentials service and Address Validation service.. This service is required for the ABAP SDK to code sample provided in the blog.
+```bash
+gcloud services enable iamcredentials.googleapis.com
+gcloud services enable addressvalidation.googleapis.com
+```
+-  This line creates a service account named `abap-sdk-dev`. This service account will be used by the ABAP SDK.
+```bash
+gcloud iam service-accounts create abap-sdk-dev \
+  --description="ABAP SDK Dev Account" \
+  --display-name="ABAP SDK Dev Account"
+```
+-  The below line create the vm `abap-trail-docker`, with startup script [vm_startup_script.sh](https://github.com/google-cloud-abap/community/blob/main/blogs/abap-trial-docker-1909/vm_startup_script.sh) to install docker and SAP 1909 trail.
+```bash
+gcloud compute instances create abap-trial-docker \
+  --project=abap-sdk-poc \
+  --zone=us-west4-b \
+  --machine-type=e2-highmem-2 \
+  --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default \
+  --metadata=startup-script=curl\ \ https://raw.githubusercontent.com/google-cloud-abap/community/main/blogs/abap-trial-docker-1909/vm_startup_script.sh\ -o\ /tmp/vm_startup_script.sh'\n'chmod\ 755
+```
 
 ## Virtual Machine Startup Script - vm_startup_script.sh
 
