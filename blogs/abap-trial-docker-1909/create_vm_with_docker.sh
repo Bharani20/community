@@ -3,7 +3,7 @@
 #Get the project number
 PROJECT_NAME=$(gcloud config get project)
 #Check if project is set
-if [[ -z "$PROJECT_NUMBER" ]]; then
+if [[ -z "$PROJECT_NAME" ]]; then
     echo "Project Name is not set. Use gcloud config set project"
     exit 1
 fi
