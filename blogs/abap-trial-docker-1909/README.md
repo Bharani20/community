@@ -1,6 +1,7 @@
 # Install ABAP Platform Trail 1909 docker on Google Cloud Platform
 
-The scripts listed in this repository is referred by this medium article. Below is the Google Bard generated explanation of each of the scripts:  
+The scripts listed in this repository is referred by this medium article - [Evaluating ABAP SDK for Google Cloud using ABAP Platform Trial 1909 on Google Cloud Platform](https://medium.com/google-cloud/evaluating-abap-sdk-for-google-cloud-using-abap-platform-trial-1909-on-google-cloud-platform-b69ce7adaa38). 
+Below is the Google Bard generated explanation of each of the scripts:  
 
 ## Create Virtual Machine
 **Script name:** [create_vm_with_docker.sh](https://github.com/google-cloud-abap/community/blob/main/blogs/abap-trial-docker-1909/create_vm_with_docker.sh)
