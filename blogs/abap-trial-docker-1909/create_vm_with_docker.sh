@@ -48,7 +48,7 @@ https://raw.githubusercontent.com/google-cloud-abap/community/main/blogs/abap-tr
     --service-account=$PROJECT_NUMBER-compute@developer.gserviceaccount.com \
     --scopes=https://www.googleapis.com/auth/cloud-platform \
     --tags=sapmachine \
-    --create-disk=auto-delete=yes,boot=yes,device-name=abap-trial-docker,image=projects/debian-cloud/global/images/debian-12-bookworm-v20230814,mode=rw,size=200,type=projects/abap-sdk-poc/zones/us-west4-b/diskTypes/pd-balanced \
+    --create-disk=auto-delete=yes,boot=yes,device-name=abap-trial-docker,image=projects/debian-cloud/global/images/debian-12-bookworm-v20231115,mode=rw,size=200,type=projects/$PROJECT_NAME/zones/$ZONE/diskTypes/pd-balanced \
     --no-shielded-secure-boot \
     --shielded-vtpm \
     --shielded-integrity-monitoring \
