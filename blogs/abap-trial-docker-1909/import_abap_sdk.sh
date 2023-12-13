@@ -8,8 +8,8 @@ wget  https://storage.googleapis.com/cloudsapdeploy/connectors/abapsdk/abap-sdk-
 unzip abap-sdk-for-google-cloud-1.5.zip
 
 #Copy the file to the trans folder of the docker container
-sudo docker cp K900191.GM1 a4h:/usr/sap/trans/cofiles/K900219.GM1
-sudo docker cp R900191.GM1 a4h:/usr/sap/trans/data/R900219.GM1
+sudo docker cp K900219.GM1 a4h:/usr/sap/trans/cofiles/K900219.GM1
+sudo docker cp R900219.GM1 a4h:/usr/sap/trans/data/R900219.GM1
 sudo docker cp K900221.GM1 a4h:/usr/sap/trans/cofiles/K900221.GM1
 sudo docker cp R900221.GM1 a4h:/usr/sap/trans/data/R900221.GM1
 
