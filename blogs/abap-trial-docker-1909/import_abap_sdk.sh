@@ -26,6 +26,10 @@ sudo docker exec -it a4h runuser -l root -c 'chown a4hadm /usr/sap/trans/data/*'
 
 #Run the "tp" command to import the transport
 sudo docker exec -it a4h runuser -l a4hadm -c 'tp addtobuffer GM1K900219 A4H client=001 pf=/usr/sap/trans/bin/TP_DOMAIN_A4H.PFL'
-sudo docker exec -it a4h runuser -l a4hadm -c 'tp pf=/usr/sap/trans/bin/TP_DOMAIN_A4H.PFL import GM1K900219 A4H U128 client=001'
 sudo docker exec -it a4h runuser -l a4hadm -c 'tp addtobuffer GM1K900221 A4H client=001 pf=/usr/sap/trans/bin/TP_DOMAIN_A4H.PFL'
-sudo docker exec -it a4h runuser -l a4hadm -c 'tp pf=/usr/sap/trans/bin/TP_DOMAIN_A4H.PFL import GM1K900221 A4H U128 client=001'
+sudo docker exec -it a4h runuser -l a4hadm -c 'tp addtobuffer GM1K900223 A4H client=001 pf=/usr/sap/trans/bin/TP_DOMAIN_A4H.PFL'
+sudo docker exec -it a4h runuser -l a4hadm -c 'tp pf=/usr/sap/trans/bin/TP_DOMAIN_A4H.PFL import all A4H U128 client=001'
+
+#sudo docker exec -it a4h runuser -l a4hadm -c 'tp pf=/usr/sap/trans/bin/TP_DOMAIN_A4H.PFL import GM1K900219 A4H U128 client=001'
+#sudo docker exec -it a4h runuser -l a4hadm -c 'tp addtobuffer GM1K900221 A4H client=001 pf=/usr/sap/trans/bin/TP_DOMAIN_A4H.PFL'
+#sudo docker exec -it a4h runuser -l a4hadm -c 'tp pf=/usr/sap/trans/bin/TP_DOMAIN_A4H.PFL import GM1K900221 A4H U128 client=001'
