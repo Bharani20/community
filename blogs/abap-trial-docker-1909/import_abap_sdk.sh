@@ -8,10 +8,10 @@ wget  https://storage.googleapis.com/cloudsapdeploy/connectors/abapsdk/abap-sdk-
 unzip abap-sdk-for-google-cloud-1.6.zip
 
 #Copy the file to the trans folder of the docker container
-sudo docker cp K900219.GM1 a4h:/usr/sap/trans/cofiles/K900267.GM1
-sudo docker cp R900219.GM1 a4h:/usr/sap/trans/data/R900267.GM1
-sudo docker cp K900221.GM1 a4h:/usr/sap/trans/cofiles/K900269.GM1
-sudo docker cp R900221.GM1 a4h:/usr/sap/trans/data/R900269.GM1
+sudo docker cp K900267.GM1 a4h:/usr/sap/trans/cofiles/K900267.GM1
+sudo docker cp R900267.GM1 a4h:/usr/sap/trans/data/R900267.GM1
+sudo docker cp K900269.GM1 a4h:/usr/sap/trans/cofiles/K900269.GM1
+sudo docker cp R900269.GM1 a4h:/usr/sap/trans/data/R900269.GM1
 
 #Change owner and permission
 sudo docker exec -it a4h runuser -l root -c 'chmod 777 /usr/sap/trans/cofiles/*'
